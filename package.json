@@ -26,5 +26,8 @@
     "mocha": "^4.0.1",
     "spectron": "^3.7.2",
     "walk": "^2.3.9"
+  },
+  "dependencies": {
+    "electron-packager": "^9.1.0"
   }
 }
