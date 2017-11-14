@@ -98,3 +98,5 @@ console.log(caretOffset)
         }
     }
 };
+
+// Only thing that should be accessible is updateSyntax()
