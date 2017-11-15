@@ -4,7 +4,7 @@ const remote = electron.remote
 const mainProcess = remote.require('./main')
 const selectedEditor = document.querySelector('#editor')
 
-let currentFileName = "untitled"
+let currentFileName = "Untitled"
 
 ipc.on('open-file', (event, fileName, content) => {
   selectedEditor.innerHTML = content
