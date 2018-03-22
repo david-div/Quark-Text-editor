@@ -1,14 +1,11 @@
-const { app, BrowserWindow, Menu, ipcMain, dialog} = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, dialog } = require("electron");
 const path = require("path");
 const url = require("url");
 const fs = require('fs')
-// const ipc = electron.ipcMain
-// const mainMenuTemplate = require("./src/mainMenuTemplate");
 
 // process.env.NODE_ENV = 'production'
 
 let mainWindow;
-
 
 
 app.on("ready", function() {
@@ -36,7 +33,7 @@ app.on("ready", function() {
 
 
 
-  let fileName = "Undefined"
+  let fileName = "`Undefined`"
 
   // function changeFileName (theFileName="Undefined"){
   //   let fileName = theFileName

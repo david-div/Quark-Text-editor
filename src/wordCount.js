@@ -19,7 +19,6 @@ function wordCount() {
 function lineCount() {
   let text = document.getElementById("editor").innerText;
   let lines = text.split(/\n/).length;
-  console.log(lines);
 
   document.getElementById("line-counter").innerText = lines;
 }

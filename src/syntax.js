@@ -1,31 +1,31 @@
     document.addEventListener("keyup", updateSyntax);
     var editor = document.getElementById("editor");
-    
+
     function updateSyntax() {
       syntaxRecog();
       getCaretCharacterOffsetWithin();
       Prism.highlightElement(editor);
       setCurrentCursorPosition(caretOffset);
     }
-    
+
     function syntaxRecog(){
       var fileLang = currentFileName.replace(/.*\./, "")
-    
+
       var languages = { "css": "css",
                         "js": "javascript",
                         "rb": "ruby",
                         "html": "html",
                         "md": "markdown"
                       }
-    
+
       editor.className = `language-${languages[fileLang.toString()]}`
     }
-    
+
     //  Cursor setting
     //
-    
+
     var caretOffset = 0
-    
+
     function getCaretCharacterOffsetWithin() {
         // var caretOffset = 0;
         var doc = editor.ownerDocument || editor.document;
@@ -47,17 +47,16 @@
             preCaretTextRange.setEndPoint("EndToEnd", textRange);
             caretOffset = preCaretTextRange.text.length;
         }
-        console.log("CARET log:", caretOffset)
         return caretOffset;
     }
-    
+
     function createRange(node, chars, range) {
         if (!range) {
             range = document.createRange()
             range.selectNode(node);
             range.setStart(node, 0);
         }
-    
+
         if (chars.count === 0) {
             range.setEnd(node, chars.count);
         } else if (node && chars.count >0) {
@@ -71,24 +70,23 @@
             } else {
                 for (var lp = 0; lp < node.childNodes.length; lp++) {
                     range = createRange(node.childNodes[lp], chars, range);
-    
+
                     if (chars.count === 0) {
                        break;
                     }
                 }
             }
        }
-    
+
        return range;
     };
-    
+
     function setCurrentCursorPosition(chars) {
-    console.log(caretOffset)
         if (chars >= 0) {
             var selection = window.getSelection();
-    
+
             range = createRange(document.getElementById("editor").parentNode, { count: chars });
-    
+
             if (range) {
                 range.collapse(false);
                 selection.removeAllRanges();
